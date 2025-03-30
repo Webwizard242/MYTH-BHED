@@ -21,12 +21,10 @@ db.connect((err) => {
   else console.log("✅ MySQL Database connected...");
 });
 
-// 🔹 Fact-Checking API with NLP
 app.post("/api/fact-check", async (req, res) => {
   const { text } = req.body;
   if (!text) return res.status(400).json({ error: "Text is required" });
 
-  // 🔍 Run Python NLP script to extract keywords
   exec(`python nlp_processor.py "${text}"`, async (error, stdout) => {
     if (error) {
       console.error("❌ NLP Processing Error:", error);
@@ -41,7 +39,6 @@ app.post("/api/fact-check", async (req, res) => {
         `https://factchecktools.googleapis.com/v1alpha1/claims:search?query=${encodeURIComponent(query)}&key=YOUR_GOOGLE_FACTCHECK_API_KEY`
       );
 
-      // 📝 Store fact-check in MySQL
       db.query("INSERT INTO fact_checks (query, result) VALUES (?, ?)", [text, JSON.stringify(factCheckResponse.data)], (err) => {
         if (err) console.error("❌ Database Insert Error:", err);
       });
@@ -54,6 +51,5 @@ app.post("/api/fact-check", async (req, res) => {
   });
 });
 
-// 🚀 Start Server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 Backend running on port ${PORT}`));
