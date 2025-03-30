@@ -7,13 +7,12 @@ document.getElementById("checkFact").addEventListener("click", () => {
         return;
     }
 
-    // Show loading message
     resultsDiv.innerHTML = "⏳ Checking...";
 
     fetch(`https://factchecktools.googleapis.com/v1alpha1/claims:search?query=${encodeURIComponent(query)}&key=AIzaSyD9FGIH1CzFZ1Gs7aBnkN_t0H7RXN0wG7E`)
         .then(response => response.json())
         .then(data => {
-            resultsDiv.innerHTML = ""; // Clear previous results
+            resultsDiv.innerHTML = ""; 
 
             if (data.claims && data.claims.length > 0) {
                 data.claims.forEach((claim) => {
