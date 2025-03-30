@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MythBhed</title>
+    <p>Check validity of your statements here</p>
+    <style>
+        /* Apply Flexbox to the body */
+        body {
+            display: flex;
+            justify-content: center;  /* Centers content horizontally */
+            align-items: center;      /* Centers content vertically */
+            height: 100vh;            /* Full viewport height */
+            margin: 0;                /* Remove default margin */
+            font-family: Algerian, sans-serif;
+            background: url('https://as2.ftcdn.net/v2/jpg/10/34/76/97/1000_F_1034769713_kxocfqTA5k8zGQC4xWipK6Vi41VGc0a1.jpg') no-repeat center center fixed; /* Background image */
+            background-size: cover;   /* Ensures the image covers the entire background */
+        }
+
+        /* Container for the content */
+        .container {
+            width: 320px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            padding-bottom: 10px;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #results {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Manual Fact-Check</h1>
+        <input type="text" id="query" placeholder="Enter claim to check">
+        <button id="checkFact">🔍 Check</button>
+        <div id="results">Enter a claim and click "Check".</div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>
